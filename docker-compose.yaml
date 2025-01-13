@@ -38,5 +38,10 @@ services:
     restart: unless-stopped
 
 volumes:
-  ollama: {}
+  ollama:
+    driver: local # Define the driver and options under the volume name
+    driver_opts:
+      type: none
+      device: $HOME/code/llama/models
+      o: bind
   open-webui: {}
