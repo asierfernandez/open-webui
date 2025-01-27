@@ -3,6 +3,7 @@ services:
     volumes:
       - ollama:/root/.ollama
     container_name: ollama
+    # user: "${UID}:${GID}"
     pull_policy: always
     tty: true
     restart: unless-stopped
@@ -24,6 +25,7 @@ services:
       dockerfile: Dockerfile
     image: ghcr.io/open-webui/open-webui:cuda
     container_name: open-webui
+    # user: "${UID}:${GID}"
     volumes:
       - open-webui:/app/backend/data
     depends_on:
@@ -42,6 +44,6 @@ volumes:
     driver: local # Define the driver and options under the volume name
     driver_opts:
       type: none
-      device: $HOME/code/llama/models
+      device: $HOME/ai/models
       o: bind
   open-webui: {}
